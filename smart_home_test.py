@@ -10,7 +10,8 @@ idx = 4  # id number in domoticz
 # Prompt the user to enter the command (On or Off)
 command = input("On or Off: ").strip().capitalize()
 
-# Prepare the parameters for switching the device on or off
+
+# parameters for the switching on and off
 params = {
     "type": "command",                # Specifies the action type
     "param": "switchlight",           # Indicates to switch the light
@@ -21,18 +22,20 @@ params = {
 # Set the authentication credentials (username and password)
 auth = ('admin', 'domoticz')  # username and password for authentication/login
 
+
 # Send the HTTP GET request to Domoticz to switch the device
 response = requests.get(domoticz_url, params=params, auth=auth)
 
 def change_color(hue, saturation, brightness=100):
     """
-    Change the color of a Philips Hue lamp (or compatible device) in Domoticz.
-
+    Change the color of Philips Hue lamp.
+    
     Args:
         hue (int): Color hue (0-360)
         saturation (int): Color saturation (0-100)
         brightness (int): Brightness level (0-100), default 100
     """
+
     # Prepare the parameters for changing color and brightness
     params = {
         "type": "command",
