@@ -39,4 +39,3 @@ def change_color(hue, saturation, brightness=100):
     
     print("Status code:", response.status_code)
     print(response.json())
-
