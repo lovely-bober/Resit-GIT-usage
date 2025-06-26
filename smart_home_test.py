@@ -7,24 +7,36 @@ domoticz_url = "http://127.0.0.1:8080/json.htm"
 # Specify the device ID (idx) in Domoticz that you want to control
 idx = 4  # id number in domoticz
 
+# Set the authentication credentials (username and password)
+auth = ('admin', 'domoticz')  # username and password for authentication/login
+
 # Prompt the user to enter the command (On or Off)
 command = input("On or Off: ").strip().capitalize()
 
 
-# parameters for the switching on and off
-params = {
-    "type": "command",                # Specifies the action type
-    "param": "switchlight",           # Indicates to switch the light
-    "idx": idx,                       # Device ID to control
-    "switchcmd": command              # Command to send (On or Off)
-}
+def light_switch(command):
+    """
+    Turn light on or off.
+    
+    Args:
+        command (str): "On" or "Off"
+    """
+    
+    # parameters for the switching on and off
+    params = {
+        "type": "command",                # Specifies the action type
+        "param": "switchlight",           # Indicates to switch the light
+        "idx": idx,                       # Device ID to control
+        "switchcmd": command              # Command to send (On or Off)
+    }
 
-# Set the authentication credentials (username and password)
-auth = ('admin', 'domoticz')  # username and password for authentication/login
-
-
-# Send the HTTP GET request to Domoticz to switch the device
-response = requests.get(domoticz_url, params=params, auth=auth)
+    # Send the HTTP GET request to Domoticz to switch the device
+    response = requests.get(domoticz_url, params=params, auth=auth)
+    
+    # Print the response status code and JSON content for debugging
+    print("Status code:", response.status_code)
+    print(response.json())
+    
 
 def change_color(hue, saturation, brightness=100):
     """
