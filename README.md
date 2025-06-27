@@ -11,4 +11,5 @@ Main Features:
 
 Toggle Hue lamp on/off.
 Change lamp color and brightness.
+
 Technology Stack: Python, Domoticz, Philips Hue.

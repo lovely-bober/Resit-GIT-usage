@@ -56,6 +56,14 @@ def change_color(hue, saturation, brightness=100):
         "iswhite": "false"                # Indicates not to use white color mode
     }
 
+    # Send the HTTP GET request to change the color
+    response = requests.get(domoticz_url, params=params, auth=auth)
+
+    # Print the response status code and JSON content for debugging
+    print("Status code:", response.status_code)
+    print(response.json())
+
+
 
 def set_rgb_color(red, green, blue, brightness=100):
     """
@@ -89,13 +97,6 @@ def set_rgb_color(red, green, blue, brightness=100):
     change_color(int(hue), int(saturation), brightness)
 
 
-# Send the HTTP GET request to change the color
-response = requests.get(domoticz_url, params=params, auth=auth)
-
-# Print the response status code and JSON content for debugging
-print("Status code:", response.status_code)
-print(response.json())
-
 def main():
     print("Color Control Options:")
     print("1. HSV (Hue, Saturation, Value)")
@@ -109,6 +110,12 @@ def main():
         brightness = input("Brightness (0-100): ")
         change_color(hue, saturation, brightness)
     elif choice == "2":
+        red = input("Red (0-255): ")
+        green = input("Green (0-255): ")
+        blue = input("Blue (0-255): ")
+        brightness = input("Brightness (0-100): ")
+        set_rgb_color(int(red), int(green), int(blue), int(brightness))
+    elif choice == "3":
         command = input("On or Off: ")
         light_switch(command)
     else:
