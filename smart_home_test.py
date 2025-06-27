@@ -34,7 +34,7 @@ def light_switch(command):
     print("Status code:", response.status_code)
     print(response.json())
     
-
+    
 def change_color(hue, saturation, brightness=100):
     """
     Change the color of Philips Hue lamp.
@@ -67,7 +67,7 @@ def change_color(hue, saturation, brightness=100):
 
 def set_rgb_color(red, green, blue, brightness=100):
     """
-    Set color using RGB values.
+    Set color using RGB values by converting to HSV and calling change_color.
     
     Args:
         red (int): Red value (0-255)
@@ -75,15 +75,17 @@ def set_rgb_color(red, green, blue, brightness=100):
         blue (int): Blue value (0-255)
         brightness (int): Brightness level (0-100), default 100
     """
-    # Convert RGB to HSV 
+    # Normalize RGB values to range [0, 1]
     r, g, b = red/255.0, green/255.0, blue/255.0
+    
+    # Find maximum and minimum values among RGB
     max_val = max(r, g, b)
     min_val = min(r, g, b)
     diff = max_val - min_val
     
-    # Calculate hue
+    # Calculate Hue (0-360) using RGB to HSV conversion
     if diff == 0:
-        hue = 0
+        hue = 0  # Grayscale; hue is undefined, set to 0
     elif max_val == r:
         hue = (60 * ((g - b) / diff) + 360) % 360
     elif max_val == g:
@@ -91,9 +93,10 @@ def set_rgb_color(red, green, blue, brightness=100):
     elif max_val == b:
         hue = (60 * ((r - g) / diff) + 240) % 360
     
-    # Calculate saturation
+    # Calculate Saturation (0-100)
     saturation = 0 if max_val == 0 else (diff / max_val) * 100
     
+    # Use the previously defined change_color function to set the lamp's color
     change_color(int(hue), int(saturation), brightness)
 
 
