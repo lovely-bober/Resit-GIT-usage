@@ -64,6 +64,7 @@ def change_color(hue, saturation, brightness=100):
     print(response.json())
 
 
+
 def set_rgb_color(red, green, blue, brightness=100):
     """
     Set color using RGB values by converting to HSV and calling change_color.
@@ -102,10 +103,9 @@ def set_rgb_color(red, green, blue, brightness=100):
 def main():
     print("Color Control Options:")
     print("1. HSV (Hue, Saturation, Value)")
-    print("2. RGB (Red, Green, Blue)")
-    print("3. Turn light on or off")
+    print("2. Turn light on or off")
 
-    choice = input("Choose option (1 - 3): ")
+    choice = input("Choose option (1/2): ")
     
     if choice == "1":
         hue = input("Hue (0-360): ")
