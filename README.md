@@ -7,9 +7,30 @@ This repository contains Python scripts for controlling Philips Hue lamps via th
 Overview
 Purpose: Automate and control Philips Hue lamps using Domoticz.
 
-Main Features:
+- Switch the light on or off
 
-Toggle Hue lamp on/off.
-Change lamp color and brightness.
+- Set the light color using HSV (Hue, Saturation, Value)
 
-Technology Stack: Python, Domoticz, Philips Hue.
+- Set the light color using RGB (Red, Green, Blue)
+
+- Set the light color by common color name (e.g., "red", "blue", "orange")
+
+Features:
+- Easy Color Control: Choose colors using HSV, RGB, or by name.
+
+- Brightness Adjustment: Set brightness level (0-100).
+
+- Simple On/Off: Quickly toggle the light.
+
+- Built-in Color Names: Use common names for quick color changes.
+
+- Technology Stack: Python, Domoticz, Philips Hue.
+
+Requirements:
+- Python 3.x
+
+- requests library (pip install requests)
+
+- A running Domoticz server (default URL: http://127.0.0.1:8080)
+
+- The device index (idx) of your Philips Hue or compatible light in Domoticz
