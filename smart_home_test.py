@@ -10,6 +10,21 @@ idx = 4  # id number in domoticz
 # Set the authentication credentials (username and password)
 auth = ('admin', 'domoticz')  # username and password for authentication/login
 
+# Common color names mapped to RGB values
+COLOR_RGB = {
+    "red":     (255, 0, 0),
+    "green":   (0, 255, 0),
+    "blue":    (0, 0, 255),
+    "yellow":  (255, 234, 0),
+    "cyan":    (0, 255, 255),
+    "magenta": (255, 0, 255),
+    "pink":    (255, 20, 147),
+    "orange":  (255, 165, 0),
+    "purple":  (128, 0, 128),
+    "white":   (255, 255, 255),
+    "black":   (0, 0, 0),
+    "gray":    (128, 128, 128),
+}
 
 def light_switch(command):
     """
@@ -100,12 +115,25 @@ def set_rgb_color(red, green, blue, brightness=100):
     change_color(int(hue), int(saturation), brightness)
 
 
+def set_color_by_name(color_name, brightness=100):
+    """
+    Set color using a common color name.
+    """
+    color_name = color_name.lower()
+    if color_name in COLOR_RGB:
+        red, green, blue = COLOR_RGB[color_name]
+        set_rgb_color(red, green, blue, brightness)
+    else:
+        print(f"Color '{color_name}' not recognized. Available colors: {', '.join(COLOR_RGB.keys())}")
+
+
 def main():
     print("Color Control Options:")
     print("1. HSV (Hue, Saturation, Value)")
-    print("2. Turn light on or off")
+    print("2. RGB (Red, Green, Blue)")
+    print("3. Turning on and off")
 
-    choice = input("Choose option (1/2): ")
+    choice = input("Choose option (1 - 3): ")
     
     if choice == "1":
         hue = input("Hue (0-360): ")
