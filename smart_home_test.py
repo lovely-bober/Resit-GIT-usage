@@ -141,9 +141,10 @@ def main():
     print("Color Control Options:")
     print("1. HSV (Hue, Saturation, Value)")
     print("2. RGB (Red, Green, Blue)")
-    print("3. Turning on and off")
+    print("3. Color by name")
+    print("4. Turning on and off")
 
-    choice = input("Choose option (1 - 3): ")
+    choice = input("Choose option (1 - 4): ")
     
     if choice == "1":
         hue = input("Hue (0-360): ")
@@ -157,6 +158,10 @@ def main():
         brightness = input("Brightness (0-100): ")
         set_rgb_color(int(red), int(green), int(blue), int(brightness))
     elif choice == "3":
+        color_name = input("Color name (e.g. pink, blue, orange): ")
+        brightness = input("Brightness (0-100): ")
+        set_color_by_name(color_name, int(brightness))
+    elif choice == "4":
         command = input("On or Off: ")
         light_switch(command)
     else:
