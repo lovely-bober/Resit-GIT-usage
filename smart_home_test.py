@@ -117,13 +117,23 @@ def set_rgb_color(red, green, blue, brightness=100):
 
 def set_color_by_name(color_name, brightness=100):
     """
-    Set color using a common color name.
+    Set color using a common color name by looking up RGB values and calling set_rgb_color.
+    
+    Args:
+        color_name (str): Name of the color (e.g., 'red', 'green', 'blue')
+        brightness (int): Brightness level (0-100), default 100
     """
+    # Convert color name to lowercase for case-insensitive matching
     color_name = color_name.lower()
+    
+    # Check if the color name exists in the COLOR_RGB dictionary
     if color_name in COLOR_RGB:
+        # Get the RGB values for the requested color
         red, green, blue = COLOR_RGB[color_name]
+        # Set the lamp color using the RGB values and specified brightness
         set_rgb_color(red, green, blue, brightness)
     else:
+        # If the color is not recognized, print an error and list available colors
         print(f"Color '{color_name}' not recognized. Available colors: {', '.join(COLOR_RGB.keys())}")
 
 
