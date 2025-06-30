@@ -138,34 +138,41 @@ def set_color_by_name(color_name, brightness=100):
 
 
 def main():
+    # Display the available color control options to the user
     print("Color Control Options:")
     print("1. HSV (Hue, Saturation, Value)")
     print("2. RGB (Red, Green, Blue)")
     print("3. Color by name")
     print("4. Turning on and off")
 
+    # Prompt the user to choose one of the options
     choice = input("Choose option (1 - 4): ")
     
+    # Option 1: Set color using HSV values
     if choice == "1":
-        hue = input("Hue (0-360): ")
-        saturation = input("Saturation (0-100): ")
-        brightness = input("Brightness (0-100): ")
-        change_color(hue, saturation, brightness)
+        hue = input("Hue (0-360): ")    # Get hue value from user
+        saturation = input("Saturation (0-100): ")  # Get saturation value
+        brightness = input("Brightness (0-100): ")  # Get brightness value
+        change_color(hue, saturation, brightness)   # Call function to apply HSV color
+    # Option 2: Set color using RGB values
     elif choice == "2":
-        red = input("Red (0-255): ")
-        green = input("Green (0-255): ")
-        blue = input("Blue (0-255): ")
-        brightness = input("Brightness (0-100): ")
-        set_rgb_color(int(red), int(green), int(blue), int(brightness))
+        red = input("Red (0-255): ")    # Get red component
+        green = input("Green (0-255): ")    # Get green component
+        blue = input("Blue (0-255): ")      # Get blue component
+        brightness = input("Brightness (0-100): ")  # Get brightness
+        set_rgb_color(int(red), int(green), int(blue), int(brightness))  # Apply RGB color
+    # Option 3: Set color using a color name
     elif choice == "3":
-        color_name = input("Color name (e.g. pink, blue, orange): ")
-        brightness = input("Brightness (0-100): ")
-        set_color_by_name(color_name, int(brightness))
+        color_name = input("Color name (e.g. pink, blue, orange): ")    # Ask for color name
+        brightness = input("Brightness (0-100): ") # Ask for brightness
+        set_color_by_name(color_name, int(brightness))  # Set color using the name
+    # Option 4: Turn lights on or off
     elif choice == "4":
-        command = input("On or Off: ")
-        light_switch(command)
+        command = input("On or Off: ")  # Get command to turn lights on or off
+        light_switch(command)   # Call function to switch light
+    # If input is invalid
     else:
-        print("Invalid choice")
+        print("Invalid choice") # Inform user of invalid input
 
 
 if __name__ == "__main__":
