@@ -137,7 +137,6 @@ class DomoticzLight:
             print(f"Color '{color_name}' not recognized. Available: {', '.join(COLOR_RGB.keys())}")
 
 
-
 def main():
     domoticz_url = "http://127.0.0.1:8080/json.htm"
     idx = 4
@@ -166,14 +165,14 @@ def main():
             return
         saturation = input("Saturation (0-100): ")  # Get saturation value
         brightness = input("Brightness (0-100): ")  # Get brightness value
-        light.change_color(hue, saturation, brightness)   # Call function to apply HSV color
+        light.set_color_hsv(hue, saturation, brightness)   # Call function to apply HSV color
     # Option 2: Set color using RGB values
     elif choice == "2":
         red = input("Red (0-255): ")    # Get red component
         green = input("Green (0-255): ")    # Get green component
         blue = input("Blue (0-255): ")      # Get blue component
         brightness = input("Brightness (0-100): ")  # Get brightness
-        light.set_rgb_color(int(red), int(green), int(blue), int(brightness))  # Apply RGB color
+        light.set_color_rgb(int(red), int(green), int(blue), int(brightness))  # Apply RGB color
     # Option 3: Set color using a color name
     elif choice == "3":
         color_name = input("Color name (e.g. pink, blue, orange): ")    # Ask for color name
