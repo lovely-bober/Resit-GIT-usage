@@ -157,7 +157,13 @@ def main():
     
     # Option 1: Set color using HSV values
     if choice == "1":
-        hue = input("Hue (0-360): ")    # Get hue value from user
+        try:
+            hue = int(input("Hue (0-360): "))       # get hue value from user with validation to check if the hue value is between 0 and 360
+            if not 0 <= hue <= 360:
+                raise ValueError
+        except ValueError:
+            print("Invalid hue. Please enter a number between 0 and 360.")
+            return
         saturation = input("Saturation (0-100): ")  # Get saturation value
         brightness = input("Brightness (0-100): ")  # Get brightness value
         light.change_color(hue, saturation, brightness)   # Call function to apply HSV color
@@ -181,6 +187,12 @@ def main():
     else:
         print("Invalid choice") # Inform user of invalid input
 
+# Keeps looping so user can do multiple things without having to start the program again
+while True:
+    if __name__ == "__main__":
+        main()
+    again = input("Do you want to perform another action? (y/n): ").lower() 
+    if again != "y":
+        break
 
-if __name__ == "__main__":
-    main()
+
