@@ -135,6 +135,14 @@ class DomoticzLight:
         else:
             # Print an error if the color is not recognized
             print(f"Color '{color_name}' not recognized. Available: {', '.join(COLOR_RGB.keys())}")
+    
+    def show_colors(self):
+        """
+        Print all available color names.
+        """
+        print("Available colors:")
+        for color in COLOR_RGB.keys():
+            print(f"- {color}")
 
 
 def main():
@@ -150,9 +158,10 @@ def main():
     print("2. RGB (Red, Green, Blue)")
     print("3. Color by name")
     print("4. Turning on and off")
+    print("5. Show available colors")
 
     # Prompt the user to choose one of the options
-    choice = input("Choose option (1 - 4): ")
+    choice = input("Choose option (1 - 5): ")
     
     # Option 1: Set color using HSV values
     if choice == "1":
@@ -182,6 +191,8 @@ def main():
     elif choice == "4":
         command = input("On or Off: ")  # Get command to turn lights on or off
         light.switch(command)   # Call function to switch light
+    elif choice == "5":
+        light.show_colors()
     # If input is invalid
     else:
         print("Invalid choice") # Inform user of invalid input
