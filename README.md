@@ -46,3 +46,28 @@ Troubleshooting
 - Authentication errors: Double-check your username and password.
 
 - Light not responding: Ensure the correct idx is set for your device.
+
+
+How to Use
+- Clone or download this repository
+
+- Make sure you have Python 3 and the "requests" lbrary installed: pip install requests
+
+- Open the script in your editor or run it directly in the terminal: python smart_home_test.py
+
+- Choose one of the following options when prompted:
+- `1`: Set light color using HSV values
+- `2`: Set light color using RGB values
+- `3`: Set color using a color name (e.g., `"blue"`, `"orange"`)
+- `4`: Switch the light on or off
+- `5`: Show a list of supported color names
+
+- Follow the on-screen instructions to enter values (e.g., hue, brightness).
+
+- After each action, you can choose whether to perform another one.
+
+This script runs in a **loop**, so you can test multiple light actions without restarting the script.
+
+
+
+
