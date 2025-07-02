@@ -197,10 +197,12 @@ def main():
     else:
         print("Invalid choice") # Inform user of invalid input
 
-
+# Keeps looping so user can do multiple things without having to start the program again
 while True:
     if __name__ == "__main__":
         main()
     again = input("Do you want to perform another action? (y/n): ").lower() 
     if again != "y":
         break
+
+

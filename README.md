@@ -34,3 +34,15 @@ Requirements:
 - A running Domoticz server (default URL: http://127.0.0.1:8080)
 
 - The device index (idx) of your Philips Hue or compatible light in Domoticz
+
+Customization
+- Add More Colors: Edit the COLOR_RGB dictionary to add more named colors.
+
+- Change Device: Update the idx variable for a different light.
+
+Troubleshooting
+- Connection errors: Ensure Domoticz is running and accessible at the specified URL.
+
+- Authentication errors: Double-check your username and password.
+
+- Light not responding: Ensure the correct idx is set for your device.
